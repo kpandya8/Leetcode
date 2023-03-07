@@ -35,15 +35,36 @@
 from typing import List  #Need to import List or else it will throw an error
 
 class Solution:
-    def twoSum(self, nums: List[int], target: int) -> List[int]:
+    def twoSum_bruteForce(self, nums: List[int], target: int) -> List[int]:
         #Code written:
         for i in range(len(nums)):
             for j in range(i+1, len(nums)):
                 if nums[j] == target - nums[i]:
                     return [i,j]
 
+    def twoSum_twoWayHashTable(self, nums: List[int], target: int) -> List[int]:
+        #Code written:
+        hashmap = {}
+        for i in range(len(nums)):
+            hashmap[nums[i]] = i
+        for i in range(len(nums)):
+            complement = target - nums[i]
+            if complement in hashmap and hashmap[complement] != i:
+                return [i. hashmap[complement]]
+    
+    def twoSum_oneWayHashTable(self, nums: List[int], target: int) -> List[int]:
+        #Code written:
+        hashmap = {}
+        for i in range(len(nums)):
+            complement = target - nums[i]
+            if complement in hashmap:
+                return [i, hashmap[complement]]
+            hashmap[nums[i]] = i
+
     def _main_(self):
-        return self.twoSum([2,3,4],7)
+        print(self.twoSum_bruteForce([2,3,4],7)) #TC: n^2, #SC: 1
+        print(self.twoSum_twoWayHashTable([2,3,4],7)) #TC: n, SC: n
+        print(self.twoSum_oneWayHashTable([2,3,4], 7)) #TC: n, SC: n
 
 sol = Solution()
 print(sol._main_()) 
