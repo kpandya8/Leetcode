@@ -47,9 +47,6 @@ class Solution:
                     res= max(res, j-i +1)
         return res
 
-
-
-
     def lengthOfLongestSubstring_slidingwindow(self, s:str) -> int:
         chars = Counter()
 
