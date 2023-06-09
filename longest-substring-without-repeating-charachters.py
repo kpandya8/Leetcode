@@ -25,5 +25,32 @@
 # 0 <= s.length <= 5 * 104
 # s consists of English letters, digits, symbols and spaces.
 
-#Solution:
-    
+# Three approaches: 1) Brute Force, 2) Slide Window, 3) HashMap
+
+class Solution:
+    def lengthOfLongestSubstring_bruteforce(self, s:str) -> int:
+        def check(start, end):
+            chars =  set()
+            for i in range(start, end + 1):
+                c = s[i]
+                if c in chars:
+                    return False
+                chars.add(c)
+            return True
+
+        n = len(s)
+
+        res = 0 
+        for i in range(n):
+            for j in range (i,n):
+                if check(i,j):
+                    res= max(res, j-i +1)
+        return res
+
+
+    def _main_(self):
+        s="pwwkew"
+        return self.lengthOfLongestSubstring_bruteforce(s)
+
+sol = Solution()
+print(sol._main_())
