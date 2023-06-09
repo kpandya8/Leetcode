@@ -25,8 +25,8 @@
 # 0 <= s.length <= 5 * 104
 # s consists of English letters, digits, symbols and spaces.
 
-# Three approaches: 1) Brute Force, 2) Slide Window, 3) HashMap
-
+# Three approaches: 1) Brute Force, 2) Sliding Window, 3) HashMap
+from collections import Counter #for sliding window
 class Solution:
     def lengthOfLongestSubstring_bruteforce(self, s:str) -> int:
         def check(start, end):
@@ -48,9 +48,33 @@ class Solution:
         return res
 
 
+
+
+    def lengthOfLongestSubstring_slidingwindow(self, s:str) -> int:
+        chars = Counter()
+
+        left = right = 0
+        res = 0
+        while right< len(s):
+            r = s[right]
+            chars[r] +=1
+
+            while chars[r] > 1:
+                l = s[left]
+                chars[l] -= 1
+                left += 1
+
+            res = max(res, right - left +1)
+
+            right += 1
+        return res
+
     def _main_(self):
         s="pwwkew"
-        return self.lengthOfLongestSubstring_bruteforce(s)
+        print(self.lengthOfLongestSubstring_bruteforce(s)) #TC: O(n^3); SC: O(k)
+        print(self.lengthOfLongestSubstring_slidingwindow(s)) #TC: O(2n) = O(n); SC: O(min(m,n))
+
+
 
 sol = Solution()
 print(sol._main_())
