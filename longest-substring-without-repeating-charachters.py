@@ -68,12 +68,28 @@ class Solution:
 
             right += 1
         return res
+    
+    def lengthOfLongestSubstring_hashMap(self, s:str) -> int:
+        n = len(s)
+        ans = 0
+        # mp stores the current index of a character
+        mp = {}
+
+        i = 0
+        # try to extend the range [i, j]
+        for j in range(n):
+            if s[j] in mp:
+                i = max(mp[s[j]], i)
+            ans = max(ans, j - i + 1)
+            mp[s[j]] = j + 1
+
+        return ans
 
     def _main_(self):
         s="pwwkew"
         print(self.lengthOfLongestSubstring_bruteforce(s)) #TC: O(n^3); SC: O(k)
         print(self.lengthOfLongestSubstring_slidingwindow(s)) #TC: O(2n) = O(n); SC: O(min(m,n))
-
+        print(self.lengthOfLongestSubstring_hashMap(s)) #TC: O(n); SC: O(min(m,n))
 
 
 sol = Solution()
