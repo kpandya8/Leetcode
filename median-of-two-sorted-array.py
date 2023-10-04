@@ -22,3 +22,30 @@
 # 0 <= n <= 1000
 # 1 <= m + n <= 2000
 # -106 <= nums1[i], nums2[i] <= 106
+
+# My logic and understanding: The first approach is to merge the two arrays and then find the middle element from the merged array. Also cosider the odd and even factor.
+
+
+class Solution:
+    def median_of_the_given_arrays(self, nums1: list[int], nums2: list[int]) -> float:
+        merge_two_arrays = nums1 + nums2
+        merge_two_arrays.sort()
+
+        total = len(merge_two_arrays)
+
+        # odd number of elements
+        if total % 2 == 1:
+            return float(merge_two_arrays[total//2])
+        else:
+            m1 = merge_two_arrays[total // 2 - 1]
+            m2 = merge_two_arrays[total // 2]
+            return (float(m1) + float(m2)) // 2.0
+    
+    def _main_(self):
+        a = [1]
+        b = [3]
+        print(self.median_of_the_given_arrays(a,b))
+
+
+sol = Solution()
+print(sol._main_())
