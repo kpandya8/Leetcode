@@ -56,7 +56,7 @@ def create_linked_list(elements):
     return head
 
 sol = Solution()
-L = create_linked_list([1,2,3,4,5,6,7,8,9])
+L = create_linked_list([1,2,3,4,5,6,7,8,6,7,8,9])
 
 def print_linked_list(head):
     while head:
@@ -64,7 +64,7 @@ def print_linked_list(head):
         head = head.next
     print("None")
 
-print_linked_list(sol.removeNthnode(L,2))
+print_linked_list(sol.removeNthnode(L,4))
 
 
 
