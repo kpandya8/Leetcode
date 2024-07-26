@@ -54,4 +54,18 @@ from typing import List
 
 class Solution:
     def removeElement(self, nums: List[int], val: int) -> int:
-        
+        x = 0
+
+        for i in range(len(nums)):
+            if nums[i] != val:
+                nums[x] = nums[i]
+                x+=1
+        return x
+    
+    def _main_(self):
+        a=[3,2,2,3]
+        b= self.removeElement(a,2)
+        print(a[:b])
+
+sol = Solution()
+sol._main_()
