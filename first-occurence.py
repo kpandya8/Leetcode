@@ -27,3 +27,8 @@ class Solution:
             if haystack[i:i+len(needle)] == needle:
                 return i
         return -1
+    
+sol = Solution()
+haystack = "sadbutsad"
+needle = "sad"
+print(sol.strStr(haystack, needle))
