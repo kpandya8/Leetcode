@@ -58,17 +58,5 @@ class Solution:
 s = Solution()
 print(s.next_permutation([1,2,3]))
 
-Time Complexity: 
-𝑂
-(
-𝑛
-)
-O(n), where 
-𝑛
-n is the length of the array.
-Space Complexity: 
-𝑂
-(
-1
-)
-O(1), as the function modifies the array in place and uses constant extra memory.
+# Time Complexity = O(n)
+# Space Complexity = O(1)
